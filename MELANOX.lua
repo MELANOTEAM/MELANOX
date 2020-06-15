@@ -662,9 +662,7 @@ send(msg.chat_id_, msg.id_,pre_msg)
 end
 
 --------------------------------------------------------------------------------------------------------------
-function SourceMELANOX(msg,data) -- بداية العمل
-if msg then
-local text = msg.content_.text_
+
 --------------------------------------------------------------------------------------------------------------
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
@@ -11049,7 +11047,7 @@ end -- end new msg
 end -- end callback
 
 
-
+end
 
 
 

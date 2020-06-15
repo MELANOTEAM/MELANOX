@@ -8250,20 +8250,15 @@ Text = '\n☑️┋ بالتاكيد تم تعطيل الرفع'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
-function start_function(extra, result, success)
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
-local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) or 1) 
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..result.sender_user_id_) or 0) 
-local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
-local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
-local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
-local username = ('[@'..data.username_..']' or 'لا يوجد')
-local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'🎟️┋ ايديه »(`'..iduser..'`)\n🎭┋ معرفه »('..username..')\n📌┋ رتبته »('..rtp..')\n✏┋ تعديلاته »('..edit..')\n🗳️┋ المجوهراتي »('..NUMPGAME..')\n🔖┋ جهاته »('..Contact..')\n📨┋ رسائله »('..Msguser..')')
-end,nil)
+if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'Melanox:Lock:ID:Bot'..msg.chat_id_) then
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n 📌| اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+return false
 end
 if text and text:match("^ايدي @(.*)$") then
 local username = text:match("^ايدي @(.*)$")

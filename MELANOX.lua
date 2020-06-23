@@ -6900,7 +6900,7 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-database:setex(bot_id.."MELANOXX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_,240,true)  
+database:setex(bot_id.."MELANOX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_,240,true)  
 local Text= [[
 ܁༯︙هلو حياتي 🤍 ܰ
 ܁༯︙يمكنك اضافة ܊
@@ -6930,18 +6930,18 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-if database:get(bot_id.."MELANOXX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) then 
+if database:get(bot_id.."MELANOX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) then 
 if text == 'الغاء' then 
 send(msg.chat_id_, msg.id_,"📫┇تم الغاء تعين الايدي") 
-database:del(bot_id.."MELANOXX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
+database:del(bot_id.."MELANOX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
 return false  
 end 
-database:del(bot_id.."MELANOXX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
-database:set(bot_id.."MELANOXX:Klesh:Id:Bot"..msg.chat_id_,text:match("(.*)"))
+database:del(bot_id.."MELANOX:Set:Id:Gp"..msg.chat_id_..""..msg.sender_user_id_) 
+database:set(bot_id.."MELANOX:Klesh:Id:Bot"..msg.chat_id_,text:match("(.*)"))
 send(msg.chat_id_, msg.id_,'📌┇تم تعين الايدي')    
 end
 
-if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'MELANOXX:Lock:ID:Bot'..msg.chat_id_) then
+if text == 'ايدي' and tonumber(msg.reply_to_message_id_) == 0 and not database:get(bot_id..'MELANOX:Lock:ID:Bot'..msg.chat_id_) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6951,8 +6951,8 @@ send(msg.chat_id_, msg.id_,'• اهلا بك حياتي 💞 •\n• لايم�
 end
 return false
 end
-if not database:sismember(bot_id..'MELANOXX:Spam:Group'..msg.sender_user_id_,text) then
-database:sadd(bot_id.."MELANOXX:Spam:Group"..msg.sender_user_id_,text) 
+if not database:sismember(bot_id..'MELANOX:Spam:Group'..msg.sender_user_id_,text) then
+database:sadd(bot_id.."MELANOX:Spam:Group"..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ then
@@ -6961,12 +6961,12 @@ else
 UserName_User = 'لا يوجد'
 end
 local Id = msg.sender_user_id_
-local NumMsg = database:get(bot_id..'MELANOXX:messageUser'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local NumMsg = database:get(bot_id..'MELANOX:messageUser'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
 local Status_Gps = Get_Rank(Id,msg.chat_id_)
-local message_edit = database:get(bot_id..'MELANOXX:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
+local message_edit = database:get(bot_id..'MELANOX:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..msg.chat_id_..msg.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."MELANOXX:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
+local Add_Mem = database:get(bot_id.."MELANOX:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -6977,8 +6977,8 @@ local Texting = {
 "عمري الحلوين 💘",
 }
 local Description = Texting[math.random(#Texting)]
-local get_id = database:get(bot_id.."MELANOXX:Klesh:Id:Bot"..msg.chat_id_)
-if not database:get(bot_id..'MELANOXX:Lock:ID:Bot:Photo'..msg.chat_id_) then
+local get_id = database:get(bot_id.."MELANOX:Klesh:Id:Bot"..msg.chat_id_)
+if not database:get(bot_id..'MELANOX:Lock:ID:Bot:Photo'..msg.chat_id_) then
 if taha.photos_[0] then
 if get_id then
 local get_id = get_id:gsub('#AddMem',Add_Mem) 
@@ -7033,8 +7033,8 @@ end
 send(msg.chat_id_, msg.id_,'🔰┇تم تنظيف *~ '..Number..'* رساله .')  
 end
 
-if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'MELANOXX:Lock:ID:Bot'..msg.chat_id_) then
-function Function_MELANOXX(extra, result, success)
+if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 and not database:get(bot_id..'MELANOX:Lock:ID:Bot'..msg.chat_id_) then
+function Function_MELANOX(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.first_name_ == false then
 send(msg.chat_id_, msg.id_,'👤┇ الحساب محذوف لا توجد معلوماته ')
@@ -7046,22 +7046,22 @@ else
 UserName_User = 'لا يوجد'
 end
 local Id = data.id_
-local NumMsg = database:get(bot_id..'MELANOXX:messageUser'..msg.chat_id_..':'..data.id_) or 0
+local NumMsg = database:get(bot_id..'MELANOX:messageUser'..msg.chat_id_..':'..data.id_) or 0
 local TotalMsg = Total_message(NumMsg)
 local Status_Gps = Get_Rank(Id,msg.chat_id_)
-local message_edit = database:get(bot_id..'MELANOXX:message_edit'..msg.chat_id_..data.id_) or 0
+local message_edit = database:get(bot_id..'MELANOX:message_edit'..msg.chat_id_..data.id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Msg_User"..msg.chat_id_..":"..data.id_) or 0
-local Add_Mem = database:get(bot_id.."MELANOXX:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
+local Add_Mem = database:get(bot_id.."MELANOX:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
 send(msg.chat_id_, msg.id_,'*🔘┇ايديه - '..Id..'\n📨┇رسائله - '..NumMsg..'\n📌┇معرفه - *['..UserName_User..']*\n📈┇تفاعله - '..TotalMsg..'\n🚸┇رتبته - '..Status_Gps..'\n⚡┇تعديلاته - '..message_edit..'\n💠┇جهاته - '..Add_Mem..'*') 
 end,nil)   
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_MELANOXX, nil)
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_MELANOX, nil)
 return false
 end
 
-if text and text:match("^ايدي @(.*)$") and not database:get(bot_id..'MELANOXX:Lock:ID:Bot'..msg.chat_id_) then
+if text and text:match("^ايدي @(.*)$") and not database:get(bot_id..'MELANOX:Lock:ID:Bot'..msg.chat_id_) then
 local username = text:match("^ايدي @(.*)$")
-function Function_MELANOXX(extra, result, success)
+function Function_MELANOX(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(arg,data) 
 if data.username_ then
@@ -7070,19 +7070,19 @@ else
 UserName_User = 'لا يوجد'
 end
 local Id = data.id_
-local NumMsg = database:get(bot_id..'MELANOXX:messageUser'..msg.chat_id_..':'..data.id_) or 0
+local NumMsg = database:get(bot_id..'MELANOX:messageUser'..msg.chat_id_..':'..data.id_) or 0
 local TotalMsg = Total_message(NumMsg)
 local Status_Gps = Get_Rank(Id,msg.chat_id_)
-local message_edit = database:get(bot_id..'MELANOXX:message_edit'..msg.chat_id_..data.id_) or 0
+local message_edit = database:get(bot_id..'MELANOX:message_edit'..msg.chat_id_..data.id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Msg_User"..msg.chat_id_..":"..data.id_) or 0
-local Add_Mem = database:get(bot_id.."MELANOXX:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
+local Add_Mem = database:get(bot_id.."MELANOX:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
 send(msg.chat_id_, msg.id_,'*🔘┇ايديه - '..Id..'\n📨┇رسائله - '..NumMsg..'\n📌┇معرفه - *['..UserName_User..']*\n📈┇تفاعله - '..TotalMsg..'\n🚸┇رتبته - '..Status_Gps..'\n⚡┇تعديلاته - '..message_edit..'\n💠┇جهاته - '..Add_Mem..'*') 
 end,nil)   
 else
 send(msg.chat_id_, msg.id_,'👤┇لا يوجد حساب بهاذا المعرف')
 end
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_MELANOXX, nil)
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_MELANOX, nil)
 return false
 end
 
@@ -8333,7 +8333,7 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-database:del(bot_id..'MELANOXX:Lock:ID:Bot'..msg.chat_id_) 
+database:del(bot_id..'MELANOX:Lock:ID:Bot'..msg.chat_id_) 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل الايدي') 
 end
 if text == 'تعطيل الايدي' and Mode(msg) then  
@@ -8346,7 +8346,7 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-database:set(bot_id..'MELANOXX:Lock:ID:Bot'..msg.chat_id_,true) 
+database:set(bot_id..'MELANOX:Lock:ID:Bot'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل الايدي') 
 end
 if text == 'تفعيل الايدي بالصوره' and Mode(msg) then   
@@ -8359,7 +8359,7 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-database:del(bot_id..'MELANOXX:Lock:ID:Bot:Photo'..msg.chat_id_) 
+database:del(bot_id..'MELANOX:Lock:ID:Bot:Photo'..msg.chat_id_) 
 send(msg.chat_id_, msg.id_,'☑┇تم تفعيل الايدي بالصوره') 
 end
 if text == 'تعطيل الايدي بالصوره' and Mode(msg) then  
@@ -8372,7 +8372,7 @@ send(msg.chat_id_, msg.id_,'👥| لا تستطيع استخدام البوت ي
 end
 return false
 end
-database:set(bot_id..'MELANOXX:Lock:ID:Bot:Photo'..msg.chat_id_,true) 
+database:set(bot_id..'MELANOX:Lock:ID:Bot:Photo'..msg.chat_id_,true) 
 send(msg.chat_id_, msg.id_,'☑┇تم تعطيل الايدي بالصوره') 
 end
 
